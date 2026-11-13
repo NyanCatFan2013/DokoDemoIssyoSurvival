@@ -1,0 +1,19 @@
+using UnityEngine;
+
+public class TopDownMovement : MonoBehaviour
+{
+    public float speed = 5f;
+
+    void Update()
+    {
+        // Get WASD or Arrow key input (-1 to 1)
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        // Normalize to prevent faster diagonal movement
+        Vector2 direction = new Vector2(moveX, moveY).normalized;
+
+        // Move the object
+        transform.Translate(direction * speed * Time.deltaTime);
+    }
+}
